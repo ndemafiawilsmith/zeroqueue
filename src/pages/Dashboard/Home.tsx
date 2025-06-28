@@ -14,7 +14,7 @@ import RecentOrders from "../../components/ecommerce/RecentOrders";
 export default function Home() {
   const [interviews, setInterviews] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [polling, setPolling] = useState(false);
+  // const [polling, setPolling] = useState(false);
 
   const fetchInterviews = async () => {
     try {

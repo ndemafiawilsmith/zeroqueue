@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Spinner from "../ui/Spinner";
+// import Spinner from "../ui/";
 
 export default function RecentInterviewsTable() {
   const [interviews, setInterviews] = useState([]);
