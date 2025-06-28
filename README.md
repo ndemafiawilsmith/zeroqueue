@@ -6,8 +6,8 @@ ZeroQueue is a fully serverless application that automates asynchronous job inte
 
 ## 🚀 Live Demo
 
-Frontend: [https://zeroqueue.vercel.app](https://zeroqueue.vercel.app)  
-Demo Video: [YouTube Link](#) *(replace with your actual video link)*
+Frontend: [https://zeroqueue-git-main-ndemafia-wilsmiths-projects.vercel.app/](https://zeroqueue-git-main-ndemafia-wilsmiths-projects.vercel.app/)  
+Demo Video: [YouTube Link](#) *(Still working on it)*
 
 ---
 
@@ -30,7 +30,6 @@ Demo Video: [YouTube Link](#) *(replace with your actual video link)*
 - **Amazon Bedrock (Claude)** – Evaluates transcripts for skill relevance and sentiment
 - **Amazon Comprehend** – Sentiment and key phrase analysis
 - **Amazon EventBridge** – Triggers post-upload processing
-- **Amazon SES** – Email alerts for HR
 - **Amazon DynamoDB** – Stores logs of transcription and analysis results
 
 ### Hosting Platforms
@@ -42,12 +41,7 @@ Demo Video: [YouTube Link](#) *(replace with your actual video link)*
 
 ## 📁 Folder Structure
 
-├── backend-lambda/
-│ ├── GeneratePresignedURL.py
-│ ├── GetAnalyzedInterviews.py
-│ └── ProcessInterviewUpload.py
-├── / (React + Tailwind app, hosted on Vercel)
-├── README.md
+<pre> ```plaintext ├── backend-lambda/ │ ├── GeneratePresignedURL.py │ ├── GetAnalyzedInterviews.py │ └── ProcessInterviewUpload.py ├── / (React + Tailwind app, hosted on Vercel) ├── README.md ``` </pre>
 
 ## 💡 What It Does
 
