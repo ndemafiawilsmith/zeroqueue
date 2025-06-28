@@ -1,192 +1,125 @@
-# TailAdmin React - Free React Tailwind Admin Dashboard Template
+# 🧠 ZeroQueue – AI-Powered Serverless Interview Screener
 
-TailAdmin is a free and open-source admin dashboard template built on **React and Tailwind CSS**, providing developers
-with everything they need to create a comprehensive, data-driven back-end,
-dashboard, or admin panel solution for upcoming web projects.
+ZeroQueue is a fully serverless application that automates asynchronous job interviews using AI. Candidates record and upload their video/audio responses, which are analyzed using AWS services to generate structured reports. It enables faster, unbiased, and scalable hiring for modern organizations.
 
-With TailAdmin, you get access to all the necessary dashboard UI components, elements, and pages required to build a
-feature-rich and complete dashboard or admin panel. Whether you're building dashboard or admin panel for a complex web
-application or a simple website, TailAdmin is the perfect solution to help you get up and running quickly.
+---
 
-![TailAdmin React.js Dashboard Preview](./banner.png)
+## 🚀 Live Demo
 
-## Overview
+Frontend: [https://zeroqueue.vercel.app](https://zeroqueue.vercel.app)  
+Demo Video: [YouTube Link](#) *(replace with your actual video link)*
 
-TailAdmin provides essential UI components and layouts for building feature-rich, data-driven admin dashboards and
-control panels. It's built on:
+---
 
-- React 19
-- TypeScript
+## 🛠️ Technologies Used
+
+### Languages
+- JavaScript (React Frontend)
+- Python (AWS Lambda Functions)
+
+### Frameworks & Tools
+- React
 - Tailwind CSS
+- Boto3 (AWS SDK for Python)
 
-### Quick Links
+### AWS Services
+- **AWS Lambda** – Core processing logic (video upload, transcription, reporting)
+- **Amazon API Gateway** – REST interface to Lambda
+- **Amazon S3** – Stores candidate video/audio responses and transcript outputs
+- **AWS Transcribe** – Converts recorded interviews into text
+- **Amazon Bedrock (Claude)** – Evaluates transcripts for skill relevance and sentiment
+- **Amazon Comprehend** – Sentiment and key phrase analysis
+- **Amazon EventBridge** – Triggers post-upload processing
+- **Amazon SES** – Email alerts for HR
+- **Amazon DynamoDB** – Stores logs of transcription and analysis results
 
-- [✨ Visit Website](https://tailadmin.com)
-- [📄 Documentation](https://tailadmin.com/docs)
-- [⬇️ Download](https://tailadmin.com/download)
-- [🖌️ Figma Design File (Community Edition)](https://www.figma.com/community/file/1214477970819985778)
-- [⚡ Get PRO Version](https://tailadmin.com/pricing)
+### Hosting Platforms
+- **Vercel** – Hosting the React frontend
+- **GitHub** – Source code version control
+- **YouTube** – Project demo video hosting
 
-### Demos
+---
 
-- [Free Version](https://free-react-demo.tailadmin.com/)
-- [Pro Version](https://react-demo.tailadmin.com)
+## 📁 Folder Structure
 
-### Other Versions
+├── backend-lambda/
+│ ├── GeneratePresignedURL.py
+│ ├── GetAnalyzedInterviews.py
+│ └── ProcessInterviewUpload.py
+├── / (React + Tailwind app, hosted on Vercel)
+├── README.md
 
-- [HTML Version](https://github.com/TailAdmin/tailadmin-free-tailwind-dashboard-template)
-- [Next.js Version](https://github.com/TailAdmin/free-nextjs-admin-dashboard)
-- [Vue.js Version](https://github.com/TailAdmin/vue-tailwind-admin-dashboard)
+## 💡 What It Does
 
-## Installation
+1. **Job Description Upload** – HR uploads or defines job criteria (skills, tone, etc.)
+2. **Candidate Submission** – Users record/upload audio or video responses
+3. **AI-Powered Analysis** – AWS services transcribe and analyze responses
+4. **Scoring & Reports** – Sentiment, skill match, and behavioral analysis is scored
+5. **Dashboard** – View all analyzed candidates with insights
 
-### Prerequisites
+---
 
-To get started with TailAdmin, ensure you have the following prerequisites installed and set up:
+## 🏗️ How We Built It
 
-- Node.js 18.x or later (recommended to use Node.js 20.x or later)
+### 🔹 `GeneratePresignedURL.py`
+Generates a secure, time-limited URL for candidates to upload video/audio files to S3.
 
-### Cloning the Repository
+### 🔹 `ProcessInterviewUpload.py`
+Triggered by EventBridge when an S3 upload occurs. Starts a Transcribe job and logs metadata in DynamoDB.
 
-Clone the repository using the following command:
+### 🔹 `GetAnalyzedInterviews.py`
+Fetches all interview entries from DynamoDB that have completed analysis and returns them as a structured JSON list.
 
+---
+
+## ⚠️ Challenges We Faced
+
+- Handling real-time video uploads securely to S3
+- Managing async Lambda workflows and waiting for Transcribe to complete
+- Designing prompts for Amazon Bedrock to generate fair and insightful scoring
+- Ensuring CORS support and secure API access
+- Keeping the entire stack scalable and serverless
+
+---
+
+## ✅ Accomplishments We're Proud Of
+
+- Fully serverless infrastructure using AWS Lambda
+- Seamless integration with Transcribe, Bedrock, and Comprehend
+- Clean UI/UX for async video interviews
+- Intelligent scoring and candidate ranking without manual intervention
+
+---
+
+## 📚 What We Learned
+
+- How to architect and deploy Lambda functions with S3, EventBridge, and API Gateway
+- How to use AWS Transcribe and Comprehend effectively
+- Prompt engineering with Amazon Bedrock (Claude)
+- Designing secure, scalable serverless systems
+- Optimizing frontend upload UX with pre-signed S3 URLs
+
+---
+
+## 🔮 What's Next for ZeroQueue
+
+- Dynamic follow-up questions based on candidate responses
+- Admin dashboard for HR to review, tag, and export candidates
+- Integration with ATS platforms like Greenhouse or Workable
+- Support for multiple languages and dialects
+- Bias detection and fairness scoring
+
+---
+
+## 📦 How to Run Locally
+
+### Requirements
+- AWS CLI configured with necessary IAM roles
+- Node.js and Python 3.9+
+- Vercel account (for frontend deployment)
+
+### Running Frontend
 ```bash
-git clone https://github.com/TailAdmin/free-react-tailwind-admin-dashboard.git
-```
-
-> Windows Users: place the repository near the root of your drive if you face issues while cloning.
-
-1. Install dependencies:
-
-   ```bash
-   npm install
-   # or
-   yarn install
-   ```
-
-   > Use the `--legacy-peer-deps` flag, if you face issues while installing.
-
-2. Start the development server:
-   ```bash
-   npm run dev
-   # or
-   yarn dev
-   ```
-
-## Components
-
-TailAdmin is a pre-designed starting point for building a web-based dashboard using React.js and Tailwind CSS. The
-template includes:
-
-- Sophisticated and accessible sidebar
-- Data visualization components
-- Prebuilt profile management and 404 page
-- Tables and Charts(Line and Bar)
-- Authentication forms and input elements
-- Alerts, Dropdowns, Modals, Buttons and more
-- Can't forget Dark Mode 🕶️
-
-All components are built with React and styled using Tailwind CSS for easy customization.
-
-## Feature Comparison
-
-### Free Version
-
-- 1 Unique Dashboard
-- 30+ dashboard components
-- 50+ UI elements
-- Basic Figma design files
-- Community support
-
-### Pro Version
-
-- 5 Unique Dashboards: Analytics, Ecommerce, Marketing, CRM, Stocks (more coming soon)
-- 400+ dashboard components and UI elements
-- Complete Figma design file
-- Email support
-
-To learn more about pro version features and pricing, visit our [pricing page](https://tailadmin.com/pricing).
-
-## Changelog
-
-### Version 2.0.2 - [March 25, 2025]
-
-- Upgraded to React 19
-- Included overrides for packages to prevent peer dependency errors.
-- Migrated from react-flatpickr to flatpickr package for React 19 support
-
-### Version 2.0.1 - [February 27, 2025]
-
-#### Update Overview
-
-- Upgraded to Tailwind CSS v4 for better performance and efficiency.
-- Updated class usage to match the latest syntax and features.
-- Replaced deprecated class and optimized styles.
-
-#### Next Steps
-
-- Run npm install or yarn install to update dependencies.
-- Check for any style changes or compatibility issues.
-- Refer to the Tailwind CSS v4 [Migration Guide](https://tailwindcss.com/docs/upgrade-guide) on this release. if needed.
-- This update keeps the project up to date with the latest Tailwind improvements. 🚀
-
-### Version 2.0.0 - [February 2025]
-
-A major update with comprehensive redesign and modern React patterns implementation.
-
-#### Major Improvements
-
-- Complete UI redesign with modern React patterns
-- New features: collapsible sidebar, chat, and calendar
-- Improved performance and accessibility
-- Updated data visualization using ApexCharts
-
-#### Key Features
-
-- Redesigned dashboards (Ecommerce, Analytics, Marketing, CRM)
-- Enhanced navigation with React Router integration
-- Advanced tables with sorting and filtering
-- Calendar with drag-and-drop support
-- New UI components and improved existing ones
-
-#### Breaking Changes
-
-- Updated sidebar component API
-- Migrated charts to ApexCharts
-- Revised authentication system
-
-[Read more](https://tailadmin.com/docs/update-logs/react) on this release.
-
-### Version 1.3.7 - [June 20, 2024]
-
-#### Enhancements
-
-1. Remove Repetition of DefaultLayout in every Pages
-2. Add ClickOutside Component for reduce repeated functionality in Header Message, Notification and User Dropdowns.
-
-### Version 1.3.6 - [Jan 31, 2024]
-
-#### Enhancements
-
-1. Integrate flatpickr in [Date Picker/Form Elements]
-2. Change color after select an option [Select Element/Form Elements].
-3. Make it functional [Multiselect Dropdown/Form Elements].
-4. Make best value editable [Pricing Table One/Pricing Table].
-5. Rearrange Folder structure.
-
-### Version 1.2.0 - [Apr 28, 2023]
-
-- Add Typescript in TailAdmin React.
-
-### Version 1.0.0 - Initial Release - [Mar 13, 2023]
-
-- Initial release of TailAdmin React.
-
-## License
-
-TailAdmin React.js Free Version is released under the MIT License.
-
-## Support
-
-If you find this project helpful, please consider giving it a star on GitHub. Your support helps us continue developing
-and maintaining this template.
+cd frontend
+npm install
+npm run dev
