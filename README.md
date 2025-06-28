@@ -53,7 +53,8 @@ Demo Video: [YouTube Link](#) *(Still working on it)*
 
 ---
 
-## 🏗️ How We Built It
+## 🏗️ How We Built It [📂 View Lambda Code](https://github.com/ndemafiawilsmith/zeroqueue/tree/main/backend-lambda)
+
 
 ### 🔹 `GeneratePresignedURL.py`
 Generates a secure, time-limited URL for candidates to upload video/audio files to S3.
