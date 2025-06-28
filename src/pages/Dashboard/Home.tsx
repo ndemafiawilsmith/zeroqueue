@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 // import UploadForm from "../../components/interviews/UploadForm";
 import InterviewCard from "../../components/interviews/InterviewCard";
 import Spinner from "../../components//interviews/Spinner";
@@ -12,9 +12,17 @@ import RecentOrders from "../../components/ecommerce/RecentOrders";
 // import { formatDistanceToNow } from "date-fns";
 
 export default function Home() {
-  const [interviews, setInterviews] = useState([]);
+  type Interview = {
+    submission_id: string;
+    transcript: string;
+    analysis: any;
+    timestamp: string;
+    // add other properties if needed
+  };
+
+  const [interviews, setInterviews] = useState<Interview[]>([]);
   const [loading, setLoading] = useState(true);
-  // const [polling, setPolling] = useState(false);
+  const [polling] = useState(false);
 
   const fetchInterviews = async () => {
     try {
@@ -46,30 +54,10 @@ export default function Home() {
       />
 
       <div className="grid grid-cols-1 xl:grid-cols-12 gap-6">
-        {/* <div className="xl:col-span-7 space-y-6">
-          <UploadForm onUploadComplete={() => setPolling(true)} />
-
-          <div className="bg-white p-6 rounded-xl shadow">
-            <h2 className="text-lg font-semibold text-gray-800 mb-2">📊 Summary</h2>
-            <p>Total Interviews: <strong>{interviews.length}</strong></p>
-          </div>
-        </div> */}
-
-        {/* <div className="xl:col-span-5 space-y-6">
-          <MonthlyTarget />
-        </div> */}
 
         <div className="col-span-12">
           <EcommerceMetrics />
         </div>
-
-        {/* <div className="col-span-12">
-          <StatisticsChart />
-        </div> */}
-
-        {/* <div className="col-span-12 xl:col-span-5">
-          <DemographicCard />
-        </div> */}
 
         <div className="col-span-12 xl:col-span-7">
           <RecentOrders />
